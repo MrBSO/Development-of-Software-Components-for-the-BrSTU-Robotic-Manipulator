@@ -1,83 +1,83 @@
-# Разработка компонентов ПО для робота-манипулятора БрГТУ
+# Development of Software Components for the BrSTU Robotic Manipulator
 
-**Цель** — разработать и интегрировать набор программных компонентов (модулей) для расширения функциональности, повышения точности и улучшения управляемости существующего робота-манипулятора БрГТУ.
+**Objective** — to develop and integrate a set of software components (modules) to expand functionality, improve accuracy, and enhance the controllability of the existing BrSTU robotic manipulator.
 
-## Содержание
-1. Анализ текущей архитектуры и постановка задач
+## Contents
+1. Analysis of Current Architecture and Task Definition
 ***
-2. Разработка компонентов нижнего уровня (прошивки/драйверы)
+2. Development of Low-Level Components (Firmware/Drivers)
 ***
-3. Разработка компонентов верхнего уровня (управление/API)
+3. Development of High-Level Components (Control/API)
 ***
-4. Разработка пользовательских компонентов (HMI/визуализация)
+4. Development of User Components (HMI/Visualization)
 ***
-5. Интеграция, тестирование и документация
+5. Integration, Testing, and Documentation
 
 ---
 
-## 1. Анализ текущей архитектуры и постановка задач
+## 1. Analysis of Current Architecture and Task Definition
 
-### 1.1. Анализ существующего решения
-*   Изучение текущей программно-аппаратной архитектуры робота (какие контроллеры, протоколы, ОС используются).
-*   Анализ исходного кода существующего ПО (языки программирования, структура, документация).
-*   Выявление узких мест и потенциала для улучшения (точность, скорость, безопасность, функциональность).
+### 1.1. Analysis of the Existing Solution
+*   Study of the current software and hardware architecture of the robot (which controllers, protocols, OS are used).
+*   Analysis of the existing software source code (programming languages, structure, documentation).
+*   Identification of bottlenecks and potential for improvement (accuracy, speed, safety, functionality).
 
-### 1.2. Определение требований к новым компонентам
-*   Спецификация требуемых функций: например, новый алгоритм планирования траектории, поддержка дополнительного датчика, разработка SDK.
-*   Определение интерфейсов взаимодействия новых модулей с существующей системой.
-*   Выбор стека технологий для разработки, совместимого с текущей платформой.
-
----
-
-## 2. Разработка компонентов нижнего уровня (прошивки/драйверы)
-
-### 2.1. Модернизация прошивок контроллеров
-*   Оптимизация алгоритмов управления приводами (ПИД-регуляторы) для повышения точности позиционирования.
-*   Разработка драйвера для нового типа датчика (например, датчик усилия/момента, 3D-камера).
-*   Рефакторинг кода прошивки для повышения надежности и добавляемости новых функций.
-
-### 2.2. Разработка модуля безопасной остановки
-*   Создание независимого программно-аппаратного компонента мониторинга.
-*   Реализация логики аварийной остановки при выходе за пределы рабочей зоны или потере связи.
+### 1.2. Definition of Requirements for New Components
+*   Specification of required functions: for example, a new trajectory planning algorithm, support for an additional sensor, SDK development.
+*   Definition of interfaces for interaction of new modules with the existing system.
+*   Selection of a technology stack for development that is compatible with the current platform.
 
 ---
 
-## 3. Разработка компонентов верхнего уровня (управление/API)
+## 2. Development of Low-Level Components (Firmware/Drivers)
 
-### 3.1. Разработка нового планировщика движений
-*   Внедрение оптимизированного алгоритма расчета траекторий (сглаживание, ограничение рывков).
-*   Реализация модуля для работы в пространстве, наложенном на стандартную кинематику.
+### 2.1. Modernization of Controller Firmware
+*   Optimization of drive control algorithms (PID controllers) to improve positioning accuracy.
+*   Development of a driver for a new sensor type (e.g., force/torque sensor, 3D camera).
+*   Refactoring of the firmware code to increase reliability and add new features.
 
-### 3.2. Разработка внешнего программного интерфейса (API/SDK)
-*   Создание библиотеки для интеграции робота с внешними системами (например, техническое зрение, конвейер).
-*   Разработка драйвера/плагина для стандартных сред программирования (ROS 2, MATLAB/Simulink, если это актуально).
-
----
-
-## 4. Разработка пользовательских компонентов (HMI/визуализация)
-
-### 4.1. Разработка дополнительных виджетов для существующего HMI
-*   Создание панели мониторинга состояния двигателей (ток, температура).
-*   Разработка инструмента для калибровки новой оснастки или инструмента.
-
-### 4.2. Разработка модуля 3D-визуализации в реальном времени
-*   Создание легковесного приложения для отображения текущего положения робота в 3D на основе получаемых данных (цифровой двойник для удаленного мониторинга).
-*   Интеграция этого модуля с основным управляющим ПО.
+### 2.2. Development of a Safety Stop Module
+*   Creation of an independent software and hardware monitoring component.
+*   Implementation of emergency stop logic when leaving the workspace or losing communication.
 
 ---
 
-## 5. Интеграция, тестирование и документация
+## 3. Development of High-Level Components (Control/API)
 
-### 5.1. Интеграция с существующей системой
-*   Встраивание разработанных компонентов в текущую программную среду робота.
-*   Обеспечение обратной совместимости с已有的 сценариями использования.
+### 3.1. Development of a New Motion Planner
+*   Implementation of an optimized trajectory calculation algorithm (smoothing, jerk limitation).
+*   Implementation of a module for operation in space, superimposed on the standard kinematics.
 
-### 5.2. Комплексное тестирование
-*   Тестирование каждого компонента в изоляции (модульное тестирование).
-*   Интеграционное тестирование совместной работы новых и старых модулей.
-*   Сравнительный анализ производительности "до" и "после" внедрения.
+### 3.2. Development of an External Program Interface (API/SDK)
+*   Creation of a library for integrating the robot with external systems (e.g., machine vision, conveyor).
+*   Development of a driver/plugin for standard programming environments (ROS 2, MATLAB/Simulink, if relevant).
 
-### 5.3. Завершение проекта
-*   Актуализация проектной и технической документации.
-*   Разработка инструкций по использованию новых компонентов.
-*   Подготовка рекомендаций по дальнейшему развитию программной части робота.
+---
+
+## 4. Development of User Components (HMI/Visualization)
+
+### 4.1. Development of Additional Widgets for the Existing HMI
+*   Creation of a motor status monitoring panel (current, temperature).
+*   Development of a tool for calibrating new tooling or tools.
+
+### 4.2. Development of a Real-Time 3D Visualization Module
+*   Creation of a lightweight application to display the robot's current position in 3D based on received data (digital twin for remote monitoring).
+*   Integration of this module with the main control software.
+
+---
+
+## 5. Integration, Testing, and Documentation
+
+### 5.1. Integration with the Existing System
+*   Embedding the developed components into the current software environment of the robot.
+*   Ensuring backward compatibility with existing usage scenarios.
+
+### 5.2. Comprehensive Testing
+*   Testing each component in isolation (unit testing).
+*   Integration testing of the joint operation of new and old modules.
+*   Comparative performance analysis "before" and "after" implementation.
+
+### 5.3. Project Completion
+*   Updating project and technical documentation.
+*   Development of instructions for using the new components.
+*   Preparation of recommendations for the further development of the robot's software part.
