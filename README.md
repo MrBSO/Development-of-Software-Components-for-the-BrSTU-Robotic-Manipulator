@@ -44,11 +44,7 @@
 
 ## 3. Development of High-Level Components (Control/API)
 
-### 3.1. Development of a New Motion Planner
-*   Implementation of an optimized trajectory calculation algorithm (smoothing, jerk limitation).
-*   Implementation of a module for operation in space, superimposed on the standard kinematics.
-
-### 3.2. Development of an External Program Interface (API/SDK)
+### 3.1. Development of an External Program Interface (API/SDK)
 *   Creation of a library for integrating the robot with external systems (e.g., machine vision, conveyor).
 *   Development of a driver/plugin for standard programming environments (ROS 2, MATLAB/Simulink, if relevant).
 
